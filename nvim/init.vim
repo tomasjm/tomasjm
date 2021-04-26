@@ -67,6 +67,8 @@ function! s:custom_ayu_colors()
   call ayu#hi('tsInclude', 'keyword', '')
   call ayu#hi('tsConstructor', 'fg','')
   call ayu#hi('TSTagDelimiter', 'entity','')
+  call ayu#hi('TSVariableBuiltin', 'entity','')
+  call ayu#hi('TSProperty', 'fg','')
 endfunction
 augroup custom_colors
   autocmd!
