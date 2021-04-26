@@ -2,7 +2,6 @@
 set nocompatible
 call plug#begin()
   Plug 'Luxed/ayu-vim'
-  Plug 'arcticicestudio/nord-vim'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'preservim/nerdtree'
   Plug 'preservim/nerdcommenter'
