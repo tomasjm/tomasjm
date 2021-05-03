@@ -1,4 +1,3 @@
-
 set nocompatible
 call plug#begin()
   Plug 'Luxed/ayu-vim'
@@ -14,6 +13,11 @@ call plug#begin()
   Plug 'Yggdroot/indentLine'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-treesitter/playground'
+  Plug 'sheerun/vim-polyglot'
+  Plug 'kyazdani42/nvim-web-devicons'
+  Plug 'romgrk/barbar.nvim'
+  Plug 'Xuyuanp/nerdtree-git-plugin'
+  Plug 'airblade/vim-gitgutter'
 call plug#end()
 set encoding=UTF-8
 set termguicolors
@@ -60,14 +64,35 @@ nmap <silent> gr <Plug>(coc-references)
 
 nnoremap <silent> <C-p> :Files<CR>
 
+" Move to previous/next
+nnoremap <silent>    <A-,> :BufferPrevious<CR>
+nnoremap <silent>    <A-.> :BufferNext<CR>
+" Re-order to previous/next
+nnoremap <silent>    <A-<> :BufferMovePrevious<CR>
+nnoremap <silent>    <A->> :BufferMoveNext<CR>
+" Goto buffer in position...
+nnoremap <silent>    <A-1> :BufferGoto 1<CR>
+nnoremap <silent>    <A-2> :BufferGoto 2<CR>
+nnoremap <silent>    <A-3> :BufferGoto 3<CR>
+nnoremap <silent>    <A-4> :BufferGoto 4<CR>
+nnoremap <silent>    <A-5> :BufferGoto 5<CR>
+nnoremap <silent>    <A-6> :BufferGoto 6<CR>
+nnoremap <silent>    <A-7> :BufferGoto 7<CR>
+nnoremap <silent>    <A-8> :BufferGoto 8<CR>
+nnoremap <silent>    <A-9> :BufferLast<CR>
+" Close buffer
+nnoremap <silent>    <A-c> :BufferClose<CR>
+
+" let g:indentLine_fileTypeExclude = ['dashboard']
+
 function! s:custom_ayu_colors()
-  call ayu#hi('tsProperty','accent','')
-  call ayu#hi('tsTag', 'entity', '')
-  call ayu#hi('tsInclude', 'keyword', '')
-  call ayu#hi('tsConstructor', 'fg','')
+  call ayu#hi('TSProperty','accent','')
+  call ayu#hi('TSTag', 'entity', '')
+  call ayu#hi('TSInclude', 'keyword', '')
+  call ayu#hi('TSConstructor', 'fg','')
   call ayu#hi('TSTagDelimiter', 'entity','')
   call ayu#hi('TSVariableBuiltin', 'entity','')
-  call ayu#hi('TSProperty', 'fg','')
+  call ayu#hi('TSParameter', 'fg','')
 endfunction
 augroup custom_colors
   autocmd!
@@ -90,7 +115,7 @@ lua <<EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   highlight = {
-    enable = true              -- false will disable the whole extension
+    enable = true,
   },
 }
 EOF
