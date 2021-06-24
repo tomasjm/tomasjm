@@ -1,0 +1,4 @@
+picom -f &
+nitrogen --restore &
+xeventbind resolution ~/restore-wall &
+exec bspwm

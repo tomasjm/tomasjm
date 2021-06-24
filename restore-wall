@@ -1,0 +1,4 @@
+
+
+echo "Rescaling background with nitrogen"
+nitrogen --restore
